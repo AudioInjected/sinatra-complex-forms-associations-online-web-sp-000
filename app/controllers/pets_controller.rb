@@ -38,7 +38,8 @@
     @pet.update(name: params[:pet_name])
     @pet.owner = Owner.find(params[:owner_id])
     if !params[:owner][:name].empty?
-      @pet.save
+     @owner = Owner.create(name: params[:owner][:name])
+      @pet.owner = @owner 
     else 
       @owner = Owner.create(name: params[:owner][:name])
       @pet.owner = @owner 
